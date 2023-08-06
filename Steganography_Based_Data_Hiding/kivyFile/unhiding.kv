@@ -1,0 +1,99 @@
+MDScreen:
+    name: "unhiding"
+    md_bg_color: 140/255, 0, 255/255, 1
+    MDBoxLayout:
+        orientation:'vertical'
+        size: root.width, root.height
+        MDBoxLayout:
+            size_hint_y:.25
+            padding:dp(25)
+            MDBoxLayout:
+                orientation:"vertical"
+                MDLabel:
+                    text:"Decryption and Unhiding"
+                    font_size: "30sp"
+                    font_name: "Poppins/Poppins-Bold.ttf"
+                    pos_hint: {"center_x": .5, "center_y": .1}
+                    halign: "center"
+                    theme_text_color: "Custom"
+                    text_color: 0, 1, 0.9, 1
+
+        MDGridLayout:
+            size_hint_y: 1
+            cols:1
+            padding:[dp(35),dp(15),dp(35),dp(35)]
+            spacing:dp(15)
+
+            Image:
+                id: imgId
+                pos_hint: {"center_x": .5, "center_y": .8}
+                allow_stretch: True
+                keep_ratio: True
+                source: ''
+                size_hint: .8, .8
+
+            MDRaisedButton:
+                text: "Chose File"
+                font_size: "19sp"
+                font_name: "Poppins/Poppins-Bold.ttf"
+                pos_hint: {"center_x": .5, "center_y": .7}
+                size_hint: .5, .2
+                halign: "center"
+                theme_text_color: "Custom"
+                text_color: 0, 1, 191/255, 1
+                md_bg_color: 89/255,  0, 179/255, 1
+                on_press:
+                    app.uselect_file()
+
+            MDTextFieldRect:
+                hint_text: "Enter Key"
+                id: privatekey
+                font_size: "20sp"
+                font_name: "Poppins/Poppins-Bold.ttf"
+                pos_hint: {"center_x": .5, "center_y": .7}
+                size_hint_x: .7
+                size_hint_y: .25
+                halign: "center"
+                theme_text_color: "Custom"
+                text_color: 0, 1, 191/255, 1
+                md_bg_color: 89/255,  0, 179/255, 1
+                
+
+            MDRaisedButton:
+                text: "Decrypt and Unhide Data"
+                font_size: "19sp"
+                font_name: "Poppins/Poppins-Bold.ttf"
+                pos_hint: {"center_x": .5, "center_y": .7}
+                size_hint: .5, .2
+                halign: "center"
+                theme_text_color: "Custom"
+                text_color: 0, 1, 191/255, 1
+                md_bg_color: 89/255,  0, 179/255, 1
+                on_press:
+                    app.decryption(privatekey.text)
+
+            TextInput:
+                id:plainText
+                text_color:  (0,1, 0, 1)
+                pos_hint: {"center_x": .5, "center_y": .7}
+                size_hint_x: .5
+                size_hint_y: .2
+                font_size: "20sp"
+                font_name: "Poppins/Poppins-Bold.ttf"
+                halign: "center"
+                text:"Plaintext"
+                readonly: True
+
+            MDRaisedButton:
+                text: "Back"
+                font_size: "19sp"
+                font_name: "Poppins/Poppins-Bold.ttf"
+                pos_hint: {"center_x": .5, "center_y": .7}
+                size_hint: .5, .2
+                halign: "center"
+                theme_text_color: "Custom"
+                text_color: 0, 1, 191/255, 1
+                md_bg_color: 89/255,  0, 179/255, 1
+                on_release:
+                    app.dashboard()
+                    root.manager.transition.direction = 'right'

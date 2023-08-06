@@ -1,0 +1,61 @@
+MDScreen:
+    name: "dashboard"
+    md_bg_color: 140/255, 0, 255/255, 1
+    MDBoxLayout:
+        orientation:'vertical'
+        size: root.width, root.height
+        MDBoxLayout:
+            size_hint_y:.25
+            padding:dp(25)
+            MDBoxLayout:
+                orientation:"vertical"
+                MDLabel:
+                    text:"Dashboard"
+                    font_size: "30sp"
+                    font_name: "Poppins/Poppins-Bold.ttf"
+                    pos_hint: {"center_x": .5, "center_y": .1}
+                    halign: "center"
+                    theme_text_color: "Custom"
+                    text_color: 0, 1, 0.9, 1
+
+        MDGridLayout:
+            size_hint_y:.85
+            cols:2
+            padding:[dp(15),dp(15),dp(15),dp(35)]
+            spacing:dp(15)
+            ElementCard:
+                image:"images/Encryption.png"
+                text:"Encryption and Hiding"
+                on_release:
+                    app.hiding()
+                    root.manager.transition.direction = 'left'
+
+            ElementCard:
+                image:"images/Decryption.png"
+                text:"Decryption and Unhiding"
+                on_release:
+                    app.unhiding()
+                    root.manager.transition.direction = 'left'
+
+
+<ElementCard@MDCard>:
+    md_bg_color: 89/255,  0, 179/255, 1
+    padding:dp(15)
+    spacing:dp(15)
+    radius:dp(25)
+    ripple_behavior: True
+    image:''
+    text:""
+
+    orientation:'vertical'
+    Image:
+        source:root.image
+    MDBoxLayout:
+        orientation:'vertical'
+        MDLabel:
+            halign:"center"
+            text:root.text
+            font_size: "22sp"
+            font_name: "Poppins/Poppins-Bold.ttf"
+            theme_text_color: "Custom"
+            text_color: 0, 1, 191/255, 1
